@@ -1,9 +1,6 @@
-module "vpc" {
-    source  = "terraform-google-modules/network/google"
-    version = "~> 9.0"
-
-    project_id   = "<PROJECT ID>"
-    network_name = "example-vpc"
-    routing_mode = "GLOBAL"
-    auto_create_subnetworks = false
-}   
+resource "google_compute_network" "vpc_network" {
+  name                    = "vpc-network"
+  routing_mode            = "GLOBAL"
+  auto_create_subnetworks = true
+  mtu                     = 1460
+}
